@@ -1,0 +1,560 @@
+:root{
+    --blue1:#020659;
+    --blue2:#020873;
+    --blue3:#030A8C;
+    --blue4:#2104D9;
+    --blue5:#0D8DFB;
+    --blue6:#2699FB;
+    --maroon:#590242;
+    --white:#FFFF;
+}
+
+body {
+    max-width: 834px; /* maximum width of the element. Content will not grow beyond this. */
+    max-height: auto;
+    background-color: var(--blue1);
+    font-family: 'Verdana', 'Geneva', 'tahoma', 'sans-serif';
+    color: var(--white);
+}
+
+#header-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+header{
+    width: auto;
+}
+
+nav{
+    display:flex;
+    justify-content: space-between;
+    height: 50px; /* sets the desired height of the container */
+    width: 75%; /* sets the desired width of the container */
+}
+
+        nav a:hover{
+            background-color: var(--maroon); /* Background changes color when mouse hovers */
+        }
+
+        nav ul{
+            list-style-type: none; /*removes bullets from list*/ 
+            display: flex; /* This listed the links in a horizontal manner */
+        }
+
+        nav li{
+            display:flex;
+        }
+
+        nav a{
+            display:flex;
+            color: var(--white);
+            text-decoration: none; /* removes underline from links */
+        }
+
+main{
+    max-width: 834px;
+}
+
+        h1{
+            font-size: 1.25rem; /* "rem" is relative to the font size of the root element ('html') */
+        }
+
+        h2, h3 {
+            font-size: 1em; /* "em" is 1 times the font size of its parent or itself */
+        } 
+
+        p, dl, dd {
+            font-size: 1em;
+        }
+    
+
+
+
+/* trending Section CSS */
+#trending-songs{ /* A "#" references 'section's' These are ID Selectors */
+    color: var(--maroon);
+    background-color: var(--white);
+    overflow-x: auto;       /* Enable horizontal scrolling */
+    overflow-y: hidden;     /* Disable vertical scrolling */
+}
+.trending-songs-grid { /* A "." references 'div's' These are class Selectors */
+    display: grid;
+    /* grid-template-rows: 834px;          suggested to be removed */
+    grid-template-columns: repeat(5);
+    /* white-space: nowrap; */          /* Prevents line breaks for horizontal scrolling - suggested to be removed */
+    /* overflow: auto; */               /* Enable vertical and/or horizontal scrolling */
+    /* max-height: 300px; */            /* Set a maximum height to enable vertical scrolling */
+    background-color: var(--white);
+}
+        .aloma{
+            grid-row: 1;
+            grid-column: 1;
+        }
+        .myroad{
+            grid-row: 1;
+            grid-column: 2;
+        }
+        .papaya{
+            grid-row: 1;
+            grid-column: 3;
+        }
+        .smoothies{
+            grid-row: 1;
+            grid-column: 4;
+        }
+        .sperformance{
+            grid-row: 1;
+            grid-column: 5;
+        }
+
+#more-trending {
+    background-color: var(--white);
+}
+
+#more-trending a {
+    display: flex;
+    color: var(--white);
+    background-color: var(--maroon);
+    text-decoration: none;
+    border: 2px solid var(--maroon);    /* Adjust the border width and color as needed */
+    border-radius: 8px;                 /* Set the border-radius for rounded corners */
+    padding: 8px 16px;                  /* Optional: Add padding to give some space around the link text */
+    margin: 10px 10px;                  /* Adds space around the button */
+    display: inline-block;              /* Optional: Ensure the link behaves as a block element */
+    margin-left: 80%;                   /* adjusted text over to the right*/ 
+}
+
+/* Audio Controls CSS */
+audio::-webkit-media-controls-mute-button {
+    background-color: red;
+    }
+audio::-webkit-media-controls-play-button {
+    color: #00ff00;
+    }
+audio::-webkit-media-controls-enclosure {
+    border: 2px solid blue;
+    }
+/* End Audio Controls CSS */
+
+
+
+
+/* Scroll Bar CSS */
+#trending-songs ::-webkit-scrollbar {
+    width: 10px;                        /* Set the width of the scrollbar */
+}
+#trending-songs ::-webkit-scrollbar-track {
+    background-color: var(--blue1)      /* Set the color of the scrollbar track */
+}
+#trending-songs ::-webkit-scrollbar-thumb {
+    background-color: var(--blue5);     /* Set the color of the scrollbar thumb */
+    border-radius: 6px;                 /* Set the border radius for rounded corners */
+}
+#trending-songs ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blue6);     /* Set the color of the scrollbar thumb on hover */
+}
+/* End Scroll Bar CSS */
+/* End of Trending Section CSS */
+
+
+
+
+#primary-grid{
+    display: grid;
+    grid-template-columns: 417px 417px;
+}
+
+#your-playlists ::-webkit-scrollbar, #curated-playlists ::-webkit-scrollbar {
+    width: 12px;                        /* Set the width of the scrollbar */
+}
+#your-playlists ::-webkit-scrollbar-track, #curated-playlists ::-webkit-scrollbar-track  {
+    background-color: var(--blue1)      /* Set the color of the scrollbar track */
+}
+#your-playlists ::-webkit-scrollbar-thumb, #curated-playlists ::-webkit-scrollbar-thumb {
+    background-color: var(--blue5);     /* Set the color of the scrollbar thumb */
+    border-radius: 6px;                 /* Set the border radius for rounded corners */
+}
+#your-playlists ::-webkit-scrollbar-thumb:hover, #curated-playlists ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blue6);     /* Set the color of the scrollbar thumb on hover */
+}
+
+
+
+
+/* Playlist Section CSS */
+#your-playlists{ /* A "#" references 'section's' These are ID Selectors */
+    color: var(--maroon);
+    background-color: var(--white);                 
+}
+.playlists-grid { /* A "." references 'div's' These are class Selectors */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;             /* Puts a gap between the grid contents as shown by the difference in background color. */ 
+    grid-column-gap: 0px;           /* Puts a gap between the grid contents as shown by the difference in background color. */ 
+    overflow: auto;                 /* Enable vertical and/or horizontal scrolling */
+    max-height: 300px;              /* Set a maximum height to enable vertical scrolling */
+    background-color: var(--blue6);
+}
+        .best2020-img{
+            grid-row: 1;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
+            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
+            display: block;         /* Removes any default inline spacing */
+            background-color: var(--blue5);
+        }
+                .best2020 {
+                    grid-row: 1;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue5);
+                    text-align: center;
+                }
+        .pumpkin-img{
+            grid-row: 2;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
+            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
+            display: block;         /* Removes any default inline spacing */
+            background-color: var(--blue5);
+        }
+                .pumpkin{
+                    grid-row: 2;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue5);
+                    text-align: center;
+                }
+        .storm-img{
+            grid-row: 3;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
+            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
+            display: block;         /* Removes any default inline spacing */
+            background-color: var(--blue5);
+        }
+                .storm{
+                    grid-row: 3;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue5);
+                    text-align: center;
+                }
+        .jazz-img{
+            grid-row: 4;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
+            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
+            display: block;         /* Removes any default inline spacing */
+            background-color: var(--blue5);
+        }
+                .jazz{
+                    grid-row: 4;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue5);
+                    text-align: center;
+            }
+        .study-img{
+            grid-row: 5;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
+            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
+            display: block;         /* Removes default inline spacing */
+            background-color: var(--blue5);
+        }
+                .study{
+                    grid-row: 5;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue5);
+                    text-align: center;
+                }
+
+#all-playlists a {
+    display: flex;
+    color: var(--white);
+    background-color: var(--maroon);
+    text-decoration: none;
+    border: 2px solid var(--maroon);    /* Adjust the border width and color as needed */
+    border-radius: 8px;                 /* Set the border-radius for rounded corners */
+    padding: 8px 16px;                  /* Optional: Add padding to give some space around the link text */
+    margin: 10px 10px;                  /* Adds space around the button */
+    display: inline-block;              /* Optional: Ensure the link behaves as a block element */
+    margin-left: 55%;                   /*adjusted text over to the right*/ 
+}
+/* End of Playlist Section CSS */
+
+
+
+
+/* Curated Section CSS */
+#curated-playlists{ /* A "#" references 'section's' These are ID Selectors */
+    color: var(--maroon);
+    background-color: var(--white);
+}
+.curated-grid { /* A "." references 'div's' These are class Selectors */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 10px;             /* Puts a gap between the grid contents as shown by the difference in background color. */ 
+    grid-column-gap: 0px;           /* Puts a gap between the grid contents as shown by the difference in background color. */
+    overflow: auto;                 /* Enable vertical and/or horizontal scrolling */
+    max-height: 300px;              /* Set a maximum height to enable vertical scrolling */
+    background-color: var(--blue4);
+}
+        .boozy-img{
+            grid-row: 1;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
+            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
+            display: block;     /* Remove any default inline spacing */
+            background-color: var(--blue2);
+        }
+                .boozy{
+                    grid-row: 1;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue2);
+                    text-align: center;
+                }
+        .dinner-img{  
+            grid-row: 2;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
+            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
+            display: block;     /* Remove any default inline spacing */
+            background-color: var(--blue2);
+        }      
+                .dinner{
+                    grid-row: 2;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue2);
+                    text-align: center;
+                }
+        .mellow-img{
+            grid-row: 3;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
+            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
+            display: block;     /* Remove any default inline spacing */
+            background-color: var(--blue2);
+        }
+                .mellow{
+                    grid-row: 3;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue2);
+                    text-align: center;
+        }
+        .jazzchill-img{
+            grid-row: 4;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
+            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
+            display: block;     /* Remove any default inline spacing */
+            background-color: var(--blue2);
+        }
+                .jazzchill{
+                    grid-row: 4;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue2);
+                    text-align: center;
+        }
+        .jazzsax-img{
+            grid-row: 5;
+            grid-column: 1;
+            text-align: center;
+            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
+            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
+            display: block;     /* Remove any default inline spacing */
+            background-color: var(--blue2);
+        }
+                .jazzsax{
+                    grid-row: 5;
+                    grid-column: 2;
+                    color: var(--white);
+                    background-color: var(--blue2);
+                    text-align: center;
+                }
+
+#more-curated a {
+    display: flex;
+    color: var(--white);
+    background-color: var(--maroon);
+    text-decoration: none;
+    border: 2px solid var(--maroon);    /* Adjust the border width and color as needed */
+    border-radius: 8px;                 /* Set the border-radius for rounded corners */
+    padding: 8px 16px;                  /* Optional: Add padding to give some space around the link text */
+    margin: 10px 10px;                  /* Adds space around the button */
+    display: inline-block;              /* Optional: Ensure the link behaves as a block element */
+    margin-left: 60%;                   /*adjusted text over to the right*/ 
+}
+/* End of Curated Section */
+
+
+
+
+footer{
+    background-color: var(--white);
+    max-width: 834px;
+    
+}
+
+footer p{
+    color: var(--maroon);       /* color variable assigned from the :root above */
+    font-size: .75rem;
+    text-align: center;         /* Centered Copyright whereas Justify Content did not. */
+    margin: 0px;                /* Top, right, bottom, and Left is zero - removes gap between 'main' and 'footer'*/
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    /* Menu Code for Mobile First Style  */
+    
+    /* ul {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height .2s ease-out;
+    }
+    label {
+        cursor: pointer;
+        display: inline-block;
+        padding: 28px 20px;
+        position: relative;
+        user-select: none;
+    }
+    label span {
+        background-color: #ffffff;
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background-color .2s ease-out;
+        width: 18px;
+    }
+    label span:before, label span:after {
+        background: #ffffff;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+    label span:before {
+        top: 5px;
+    }
+    label span:after {
+        top: -5px;
+    }
+    input {
+        display: none;
+    }
+    input:checked ~ ul {
+        max-height: 500px;
+    }
+    input:checked ~ label span {
+        background: transparent;
+    }
+    input:checked ~ label span:before {
+        transform: rotate(-45deg);
+    }
+    input:checked ~ label span:after {
+        transform: rotate(45deg);
+    }
+    input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+        top: 0;
+    }
+    
+    @media screen and (min-width:834px) {
+        ul {
+            overflow: visible;
+            position: absolute;
+            top: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+        label span, input {
+            display: none;
+        }
+    } */
+
+
+
+
+
+
+
+    /* audio::-webkit-media-controls-mute-button {
+
+    }
+    audio::-webkit-media-controls-play-button {
+    
+    }
+    audio::-webkit-media-controls-enclosure {
+    
+    }
+
+
+
+
+
+   
+   
