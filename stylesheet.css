@@ -7,30 +7,40 @@
     --blue6:#2699FB;
     --maroon:#590242;
     --white:#FFFF;
+    --black:#0000;
+}
+
+html{
+    display: flex;
+    justify-content: center;    /* Now this actually centered all the content! */
+    height: 100vh;              /* Put content within the viewport vertically */
 }
 
 body {
-    max-width: 834px; /* maximum width of the element. Content will not grow beyond this. */
-    max-height: auto;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    min-height: 100vh;          /* Makes the container at least the full height of the viewport. */
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    max-width: 834px;           /* Maximum width of the element. Content will not grow beyond this. */
+    min-width: 834px;
     background-color: var(--blue1);
     font-family: 'Verdana', 'Geneva', 'tahoma', 'sans-serif';
     color: var(--white);
 }
 
-#header-nav{
-    display: flex;
-    justify-content: space-between;
-}
-
-header{
-    width: auto;
-}
-
 nav{
-    display:flex;
+    background-color: var(--blue3);
+    display: flex;
+    height: 5%;     /*Sets the desired height of the container */
+    width: 100%;    /* Sets the desired width of the container */
+    /* flex: 1; */  /* Causes nav to grow to fill space. */
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    height: 50px; /* sets the desired height of the container */
-    width: 75%; /* sets the desired width of the container */
 }
 
         nav a:hover{
@@ -38,21 +48,37 @@ nav{
         }
 
         nav ul{
-            list-style-type: none; /*removes bullets from list*/ 
-            display: flex; /* This listed the links in a horizontal manner */
+            list-style-type: none; /* Removes bullets from list */ 
+            display: flex;         /* This listed the links in a horizontal manner */  
+            flex: 1;
+            margin: 0 auto;
+            padding: 0;
         }
 
         nav li{
             display:flex;
+            margin: 0 auto;        /* Adjust as needed to add space between list items, 
+                                   % to make the value responsive */
+            text-align: center;    /* To center up links after <br> */
         }
 
         nav a{
             display:flex;
             color: var(--white);
-            text-decoration: none; /* removes underline from links */
+            text-decoration: none;      /* removes underline from links */
+            font-family: Verdana;
+            text-transform: uppercase;  /* The html is all lowercase. This makes them uppercase */
         }
 
-main{
+.logo {
+    font-family: Verdana;
+    font-weight: bold;          /* Make the font bold */
+    font-size: 1.5em;           /* Increase the font size,
+                                currently 1.5 times the size of the inherited size from the parent or browser */
+    font-variant: small-caps;   /* Gave all letters a capital look with the M's being the actual capitals, Inherited from the HTML. */ 
+}
+
+main { 
     max-width: 834px;
 }
 
@@ -61,58 +87,241 @@ main{
         }
 
         h2, h3 {
-            font-size: 1em; /* "em" is 1 times the font size of its parent or itself */
+            font-size: 1em;     /* "em" is 1 times the font size of its parent or itself */
         } 
 
         p, dl, dd {
             font-size: 1em;
         }
+
+
+#StationPurpose {
+    background: linear-gradient(to right, var(--blue4), var(--black)); /* Left to Right */ 
+    /* display: flex; */
+    /* flex: 1;        Causes the section to grow in between the nav and "trending-songs" to fill in space. */
     
+}
+
+#StationPurpose h2 {
+    margin-top:  0;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    }
+  
+#StationPurpose p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    }
+
+
+/* Trending Scroll Bar CSS */
+#trending-songs ::-webkit-scrollbar {
+    width: 10px;                                  /* Set the width of the scrollbar */
+}
+#trending-songs ::-webkit-scrollbar-track {
+    background-color: hsl(316, 24%, 54%);       /* Set the color of the scrollbar track (hsl - Hue, Saturation, Lightness - 316,96%,18% originally for maroon var) */
+}
+#trending-songs ::-webkit-scrollbar-thumb {
+    background-color: var(--maroon);              /* Set the color of the scrollbar thumb */
+    border-radius: 6px;                           /* Set the border radius for rounded corners */
+}
+#trending-songs ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(316, 96%, 24%)        /* Set the color of the scrollbar thumb on hover */
+}
+/* End Scroll Bar CSS */
+
 
 
 
 /* trending Section CSS */
-#trending-songs{ /* A "#" references 'section's' These are ID Selectors */
+#trending-songs h3 {
+    margin-left: 10px;      /* Moves the text off the left side a bit */
+}
+
+#trending-songs{            /* A "#" references 'section's' These are ID Selectors */
     color: var(--maroon);
     background-color: var(--white);
     overflow-x: auto;       /* Enable horizontal scrolling */
     overflow-y: hidden;     /* Disable vertical scrolling */
 }
-.trending-songs-grid { /* A "." references 'div's' These are class Selectors */
+
+.trending-songs-grid {      /* A "." references 'div's' These are class Selectors */
     display: grid;
-    /* grid-template-rows: 834px;          suggested to be removed */
-    grid-template-columns: repeat(5);
-    /* white-space: nowrap; */          /* Prevents line breaks for horizontal scrolling - suggested to be removed */
-    /* overflow: auto; */               /* Enable vertical and/or horizontal scrolling */
-    /* max-height: 300px; */            /* Set a maximum height to enable vertical scrolling */
+    grid-template-rows: 50% 50%;            /* Was: repeat(2); or 200px 200px */ 
+    grid-template-columns: repeat(5, 1fr);  /* Was: repeat (5); */
+    grid-gap: 10px;
+    /* margin: 10px;                        /* Not quite what is needed but close */
+    overflow-x: auto;                       /* Enable vertical and/or horizontal scrolling, has to be engaged for webkit-scrollbar CSS */
+    overflow-y: hidden;
+    max-height: 400px;                      /* Set a maximum height to enable vertical scrolling */
+    min-height: 400px;
     background-color: var(--white);
 }
-        .aloma{
-            grid-row: 1;
+
+.trending-songs-grid div {
+        position: relative;
+}
+        .aloma {
+            grid-row: 1 / span 2;                       
             grid-column: 1;
+            position: relative;
+            background-image: url('images/aloma-cover.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;                     
+            justify-content: flex-end;                  
+            margin-left: 20px; 
+            margin-bottom: 20px;                        /* Makes space between the content and the scrollbar. */
         }
-        .myroad{
-            grid-row: 1;
+            .aloma-descript {
+                grid-row: 1 / span 2;
+                grid-column: 1;
+                background: rgba(255, 255, 255, 0.4); /* transparent background*/
+                position: absolute;
+                top: 110px;                             /* Moved Description down to the bottom of the container */
+                width: 100%;                            /* Occupy the full width of the parent container */
+                padding-left: 10px;                     /* For better visibility */  
+            }
+                .aloma-audio{
+                    grid-row: 2;
+                    grid-column: 1;
+                    position: absolute;
+                    bottom: 200px;                      /* Align the bottom of the container with the bottom of the parent .aloma container */
+                    width: 100%;                        /* Occupy the full width of the parent container */
+                    padding: 10px;                      /* Add padding for better visibility */
+                }
+
+        .myroad {
+            grid-row: 1 / span 2; 
             grid-column: 2;
+            position: relative;
+            background-image: url('images/my-road-cover.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-end; 
+            margin-bottom: 20px;
         }
-        .papaya{
-            grid-row: 1;
+            .myroad-descript {
+                grid-row: 1 / span 2;
+                grid-column: 2;
+                background: rgba(255, 255, 255, 0.4); 
+                position: absolute;
+                top: 110px;                             
+                width: 100%;                            
+                padding-left: 10px;                     
+            }
+                .myroad-audio{
+                    grid-row: 2;
+                    grid-column: 2;
+                    position: absolute;
+                    bottom: 200px;                      
+                    width: 100%;                        
+                    padding: 10px;                      
+                }
+
+        .papaya {
+            grid-row: 1 / span 2;
             grid-column: 3;
+            position: relative;
+            background-image: url('images/papaya-cover.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-end; 
+            margin-bottom: 20px;
         }
-        .smoothies{
-            grid-row: 1;
+            .papaya-descript {
+                grid-row: 1 / span 2;
+                grid-column: 3;
+                background: rgba(255, 255, 255, 0.4); 
+                position: absolute;
+                top: 110px;                             
+                width: 100%;                            
+                padding-left: 10px;                     
+            }
+                .papaya-audio{
+                    grid-row: 2;
+                    grid-column: 3;
+                    position: absolute;
+                    bottom: 200px;                      
+                    width: 100%;                        
+                    padding: 10px;                      
+                }
+
+        .smoothies {
+            grid-row: 1 / span 2;
             grid-column: 4;
+            position: relative;
+            background-image: url('images/smoothies-cover.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-end; 
+            margin-bottom: 20px;
         }
-        .sperformance{
-            grid-row: 1;
+            .smoothies-descript {
+                grid-row: 1 / span 2;
+                grid-column: 4;
+                background: rgba(255, 255, 255, 0.4); 
+                position: absolute;
+                top: 110px;                             
+                width: 100%;                            
+                padding-left: 10px;                     
+            }
+                .smoothies-audio{
+                    grid-row: 2;
+                    grid-column: 4;
+                    position: absolute;
+                    bottom: 200px;                      
+                    width: 100%;                        
+                    padding: 10px;                      
+                }
+
+        .sperformance {
+            grid-row: 1 / span 2;
             grid-column: 5;
+            position: relative;
+            background-image: url('images/successful-performance-cover.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-end;
+            margin-bottom: 20px; 
         }
+            .sperformance-descript {
+                grid-row: 1 / span 2;
+                grid-column: 5;
+                background: rgba(255, 255, 255, 0.4); 
+                position: absolute;
+                top: 110px;                             
+                width: 100%;                            
+                padding-left: 10px;                     
+            }
+                .sperformance-audio{
+                    grid-row: 2;
+                    grid-column: 5;
+                    position: absolute;
+                    bottom: 200px;                      
+                    width: 100%;                        
+                    padding: 10px;                      
+                }
 
 #more-trending {
     background-color: var(--white);
 }
 
-#more-trending a {
+#more-trending a {                      /* Link Button Code */
     display: flex;
     color: var(--white);
     background-color: var(--maroon);
@@ -125,38 +334,28 @@ main{
     margin-left: 80%;                   /* adjusted text over to the right*/ 
 }
 
+#more-trending a:hover {
+    background-color: var(--blue1);
+}
+
 /* Audio Controls CSS */
 audio::-webkit-media-controls-mute-button {
-    background-color: red;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 1;                 /* Sets opacity fully opaque */
     }
 audio::-webkit-media-controls-play-button {
-    color: #00ff00;
+    color: black;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 1;                 /* Sets opacity fully opaque */
     }
 audio::-webkit-media-controls-enclosure {
-    border: 2px solid blue;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
     }
 /* End Audio Controls CSS */
-
-
-
-
-/* Scroll Bar CSS */
-#trending-songs ::-webkit-scrollbar {
-    width: 10px;                        /* Set the width of the scrollbar */
-}
-#trending-songs ::-webkit-scrollbar-track {
-    background-color: var(--blue1)      /* Set the color of the scrollbar track */
-}
-#trending-songs ::-webkit-scrollbar-thumb {
-    background-color: var(--blue5);     /* Set the color of the scrollbar thumb */
-    border-radius: 6px;                 /* Set the border radius for rounded corners */
-}
-#trending-songs ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--blue6);     /* Set the color of the scrollbar thumb on hover */
-}
-/* End Scroll Bar CSS */
 /* End of Trending Section CSS */
-
 
 
 
@@ -165,6 +364,10 @@ audio::-webkit-media-controls-enclosure {
     grid-template-columns: 417px 417px;
 }
 
+
+
+
+/* Playlist Scroll Bar CSS */
 #your-playlists ::-webkit-scrollbar, #curated-playlists ::-webkit-scrollbar {
     width: 12px;                        /* Set the width of the scrollbar */
 }
@@ -172,17 +375,21 @@ audio::-webkit-media-controls-enclosure {
     background-color: var(--blue1)      /* Set the color of the scrollbar track */
 }
 #your-playlists ::-webkit-scrollbar-thumb, #curated-playlists ::-webkit-scrollbar-thumb {
-    background-color: var(--blue5);     /* Set the color of the scrollbar thumb */
+    background-color: var(--blue4);     /* Set the color of the scrollbar thumb */
     border-radius: 6px;                 /* Set the border radius for rounded corners */
 }
 #your-playlists ::-webkit-scrollbar-thumb:hover, #curated-playlists ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--blue6);     /* Set the color of the scrollbar thumb on hover */
+    background-color: var(--blue5);     /* Set the color of the scrollbar thumb on hover */
 }
-
+/* End Playlist Scroll Bar CSS */
 
 
 
 /* Playlist Section CSS */
+#your-playlists h3 {
+    margin-left: 10px;
+}
+
 #your-playlists{ /* A "#" references 'section's' These are ID Selectors */
     color: var(--maroon);
     background-color: var(--white);                 
@@ -191,18 +398,22 @@ audio::-webkit-media-controls-enclosure {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 10px;             /* Puts a gap between the grid contents as shown by the difference in background color. */ 
-    grid-column-gap: 0px;           /* Puts a gap between the grid contents as shown by the difference in background color. */ 
+    grid-column-gap: 0px;           
     overflow: auto;                 /* Enable vertical and/or horizontal scrolling */
-    max-height: 300px;              /* Set a maximum height to enable vertical scrolling */
+    max-height: 400px;              /* Set a maximum height to enable vertical scrolling */
+    min-height: 400px;
     background-color: var(--blue6);
 }
         .best2020-img{
             grid-row: 1;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             max-width: 100%;        /* Ensures the image won't grow beyond the container width */
             max-height: 100%;       /* Ensures the image won't grow beyond the container height */
-            display: block;         /* Removes any default inline spacing */
+            /* display: block;         Removes any default inline spacing */
             background-color: var(--blue5);
         }
                 .best2020 {
@@ -215,10 +426,13 @@ audio::-webkit-media-controls-enclosure {
         .pumpkin-img{
             grid-row: 2;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
-            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
-            display: block;         /* Removes any default inline spacing */
+            max-width: 100%;        
+            max-height: 100%;       
+            /* display: block; */
             background-color: var(--blue5);
         }
                 .pumpkin{
@@ -231,10 +445,13 @@ audio::-webkit-media-controls-enclosure {
         .storm-img{
             grid-row: 3;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
-            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
-            display: block;         /* Removes any default inline spacing */
+            max-width: 100%;        
+            max-height: 100%;       
+            /* display: block; */
             background-color: var(--blue5);
         }
                 .storm{
@@ -247,10 +464,13 @@ audio::-webkit-media-controls-enclosure {
         .jazz-img{
             grid-row: 4;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
-            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
-            display: block;         /* Removes any default inline spacing */
+            max-width: 100%;        
+            max-height: 100%;       
+            /* display: block; */
             background-color: var(--blue5);
         }
                 .jazz{
@@ -263,10 +483,13 @@ audio::-webkit-media-controls-enclosure {
         .study-img{
             grid-row: 5;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;        /* Ensures the image won't grow beyond the container width */
-            max-height: 100%;       /* Ensures the image won't grow beyond the container height */
-            display: block;         /* Removes default inline spacing */
+            max-width: 100%;        
+            max-height: 100%;       
+            /* display: block; */
             background-color: var(--blue5);
         }
                 .study{
@@ -277,7 +500,7 @@ audio::-webkit-media-controls-enclosure {
                     text-align: center;
                 }
 
-#all-playlists a {
+#all-playlists a {                      /* Link Button Code */
     display: flex;
     color: var(--white);
     background-color: var(--maroon);
@@ -287,34 +510,43 @@ audio::-webkit-media-controls-enclosure {
     padding: 8px 16px;                  /* Optional: Add padding to give some space around the link text */
     margin: 10px 10px;                  /* Adds space around the button */
     display: inline-block;              /* Optional: Ensure the link behaves as a block element */
-    margin-left: 55%;                   /*adjusted text over to the right*/ 
+    margin-left: 55%;                   /* Adjusted text over to the right*/ 
 }
+
+#all-playlists a:hover {
+    background-color: var(--blue1);
+}
+
 /* End of Playlist Section CSS */
 
 
 
 
 /* Curated Section CSS */
-#curated-playlists{ /* A "#" references 'section's' These are ID Selectors */
+#curated-playlists{                     /* A "#" references 'section's' These are ID Selectors */
     color: var(--maroon);
     background-color: var(--white);
 }
-.curated-grid { /* A "." references 'div's' These are class Selectors */
+.curated-grid {                         /* A "." references 'div's' These are class Selectors */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-row-gap: 10px;             /* Puts a gap between the grid contents as shown by the difference in background color. */ 
-    grid-column-gap: 0px;           /* Puts a gap between the grid contents as shown by the difference in background color. */
-    overflow: auto;                 /* Enable vertical and/or horizontal scrolling */
-    max-height: 300px;              /* Set a maximum height to enable vertical scrolling */
+    grid-row-gap: 10px;             
+    grid-column-gap: 0px;           
+    overflow: auto;                 
+    max-height: 400px;              
+    min-height: 400px;
     background-color: var(--blue4);
 }
         .boozy-img{
             grid-row: 1;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
-            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
-            display: block;     /* Remove any default inline spacing */
+            max-width: 100%;    
+            max-height: 100%;   
+            /* display: block; */
             background-color: var(--blue2);
         }
                 .boozy{
@@ -327,10 +559,13 @@ audio::-webkit-media-controls-enclosure {
         .dinner-img{  
             grid-row: 2;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
-            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
-            display: block;     /* Remove any default inline spacing */
+            max-width: 100%;    
+            max-height: 100%;   
+            /* display: block; */
             background-color: var(--blue2);
         }      
                 .dinner{
@@ -343,10 +578,13 @@ audio::-webkit-media-controls-enclosure {
         .mellow-img{
             grid-row: 3;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
-            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
-            display: block;     /* Remove any default inline spacing */
+            max-width: 100%;    
+            max-height: 100%;   
+            /* display: block; */
             background-color: var(--blue2);
         }
                 .mellow{
@@ -359,10 +597,13 @@ audio::-webkit-media-controls-enclosure {
         .jazzchill-img{
             grid-row: 4;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
-            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
-            display: block;     /* Remove any default inline spacing */
+            max-width: 100%;    
+            max-height: 100%;   
+            /* display: block; */
             background-color: var(--blue2);
         }
                 .jazzchill{
@@ -375,10 +616,13 @@ audio::-webkit-media-controls-enclosure {
         .jazzsax-img{
             grid-row: 5;
             grid-column: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 100%;    /* Ensure the image won't grow beyond the container width */
-            max-height: 100%;   /* Ensure the image won't grow beyond the container height */
-            display: block;     /* Remove any default inline spacing */
+            max-width: 100%;    
+            max-height: 100%;   
+            /* display: block; */
             background-color: var(--blue2);
         }
                 .jazzsax{
@@ -389,17 +633,21 @@ audio::-webkit-media-controls-enclosure {
                     text-align: center;
                 }
 
-#more-curated a {
+#more-curated a {                       /* Link Button Code */
     display: flex;
     color: var(--white);
     background-color: var(--maroon);
     text-decoration: none;
-    border: 2px solid var(--maroon);    /* Adjust the border width and color as needed */
-    border-radius: 8px;                 /* Set the border-radius for rounded corners */
-    padding: 8px 16px;                  /* Optional: Add padding to give some space around the link text */
+    border: 2px solid var(--maroon);    /* Adjusts the border width and color */
+    border-radius: 8px;                 /* Sets the border-radius for rounded corners */
+    padding: 8px 16px;                  /* Optional padding to add space around the link text */
     margin: 10px 10px;                  /* Adds space around the button */
-    display: inline-block;              /* Optional: Ensure the link behaves as a block element */
-    margin-left: 60%;                   /*adjusted text over to the right*/ 
+    display: inline-block;              /* Optional so the link behaves as a block element */
+    margin-left: 60%;                   /* Adjusted text over to the right */ 
+}
+
+#more-curated a:hover {
+    background-color: var(--blue1);
 }
 /* End of Curated Section */
 
@@ -407,9 +655,14 @@ audio::-webkit-media-controls-enclosure {
 
 
 footer{
+    display: flex;
+    flex: 1;                        /* Causes the Footer to grow to fill in space within the Flexbox */
+    justify-content: center;        /* Centered the Copyright <p> */
+    align-items: end;               /* Moved copyright <p> to bottom of Flexbox */
+    padding-bottom: 2%;             /* Raised Copyright <p> from the bottom slightly */
     background-color: var(--white);
+    min-width: 834px;               /* Changing from max-width to min-width made a difference. */
     max-width: 834px;
-    
 }
 
 footer p{
@@ -418,143 +671,78 @@ footer p{
     text-align: center;         /* Centered Copyright whereas Justify Content did not. */
     margin: 0px;                /* Top, right, bottom, and Left is zero - removes gap between 'main' and 'footer'*/
 }
-
-    
-
+/* End Normal CSS Styles */
 
 
 
 
+/* ul {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+label span {
+    background-color: #ffffff;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background-color .2s ease-out;
+    width: 18px;
+}
+label span:before, label span:after {
+    background: #ffffff;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+label span:before {
+    top: 5px;
+}
+label span:after {
+    top: -5px;
+}
+input {
+    display: none;
+}
+input:checked ~ ul {
+    max-height: 500px;
+}
+input:checked ~ label span {
+    background: transparent;
+}
+input:checked ~ label span:before {
+    transform: rotate(-45deg);
+}
+input:checked ~ label span:after {
+    transform: rotate(45deg);
+}
+input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
+    top: 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    /* Menu Code for Mobile First Style  */
-    
-    /* ul {
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height .2s ease-out;
-    }
-    label {
-        cursor: pointer;
-        display: inline-block;
-        padding: 28px 20px;
-        position: relative;
-        user-select: none;
-    }
-    label span {
-        background-color: #ffffff;
-        display: block;
-        height: 2px;
-        position: relative;
-        transition: background-color .2s ease-out;
-        width: 18px;
-    }
-    label span:before, label span:after {
-        background: #ffffff;
-        content: '';
-        display: block;
-        height: 100%;
+@media screen and (min-width:834px) {
+    ul {
+        overflow: visible;
         position: absolute;
-        transition: all .2s ease-out;
-        width: 100%;
+        top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
-    label span:before {
-        top: 5px;
-    }
-    label span:after {
-        top: -5px;
-    }
-    input {
+    label span, input {
         display: none;
     }
-    input:checked ~ ul {
-        max-height: 500px;
-    }
-    input:checked ~ label span {
-        background: transparent;
-    }
-    input:checked ~ label span:before {
-        transform: rotate(-45deg);
-    }
-    input:checked ~ label span:after {
-        transform: rotate(45deg);
-    }
-    input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps) span:after {
-        top: 0;
-    }
-    
-    @media screen and (min-width:834px) {
-        ul {
-            overflow: visible;
-            position: absolute;
-            top: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        }
-        label span, input {
-            display: none;
-        }
-    } */
+} */
 
+/* Couldn't seem to figure out the mobile part. I remember seeing somewhere that it would be covered in class but I don't know when or where that was. 
+I'd say the site is fairly decent for a standard size but I gave up on the mobile side.  */
 
-
-
-
-
-
-    /* audio::-webkit-media-controls-mute-button {
-
-    }
-    audio::-webkit-media-controls-play-button {
-    
-    }
-    audio::-webkit-media-controls-enclosure {
-    
-    }
-
-
-
-
-
-   
-   
