@@ -743,6 +743,8 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
     }
 } */
 
-/* Couldn't seem to figure out the mobile part. I remember seeing somewhere that it would be covered in class but I don't know when or where that was. 
-I'd say the site is fairly decent for a standard size but I gave up on the mobile side.  */
+/* Couldn't seem to figure out the mobile part. I remember seeing on the powerpoint that it would be covered in class but I don't know when or where that was. 
+I'd say the site is fairly decent for a standard size but I gave up on the mobile side, It behaves well in other browsers but does lose some things. 
+In Firefox the scrollbar features are lost and the audio stylings are much different. In Safari the Audio styling is different and some of my text has shifted. 
+I don't know how to account for that except to use some kind of CSS Reset. Chrome works the best I suppose because thats what I checked everything with. */
 
